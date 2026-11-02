@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bharath Vasan | CSE Student, Aspiring Software Engineer &amp; UI/UX Enthusiast</title>
+<meta name="description" content="Portfolio of Bharath Vasan, a second-year Computer Science and Engineering student at Chennai Institute of Technology building full-stack, AI and UI/UX projects.">
+<meta property="og:title" content="Bharath Vasan | Portfolio">
+<meta property="og:description" content="Aspiring software engineer, UI/UX enthusiast and problem solver.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== Design tokens (dark default, light override) ===== */
+:root{--bg:#0A192F;--bg2:#0F172A;--card:rgba(255,255,255,.05);--bd:rgba(255,255,255,.1);--tx:#F1F5F9;--mu:#94A3B8;--ac:#00F2FE;--bl:#3B82F6;--on-ac:#06202b;
+--hd:'Plus Jakarta Sans',system-ui,sans-serif;--bd-f:'Inter',system-ui,sans-serif;--mo:'JetBrains Mono',ui-monospace,monospace}
+:root[data-theme=light]{--bg:#F8FAFC;--bg2:#EEF2F7;--card:rgba(255,255,255,.8);--bd:rgba(15,23,42,.12);--tx:#0F172A;--mu:#475569;--ac:#0369A1;--bl:#2563EB;--on-ac:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font:16px/1.65 var(--bd-f);background:var(--bg);color:var(--tx);overflow-x:hidden;transition:background .3s,color .3s}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+h1,h2,h3{font-family:var(--hd);line-height:1.15}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:5rem 0}section:nth-of-type(even){background:var(--bg2)}
+.h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:.5rem}
+.sub{color:var(--mu);max-width:60ch;margin-bottom:2.2rem}
+.glass{background:var(--card);border:1px solid var(--bd);border-radius:16px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.4rem;border-radius:999px;font:600 .95rem var(--hd);border:1px solid var(--ac);cursor:pointer;transition:transform .2s,box-shadow .2s;background:none;color:var(--ac)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px -6px var(--ac)}
+.btn.pri{background:linear-gradient(135deg,var(--ac),var(--bl));color:var(--on-ac);border-color:transparent}
+.tag{font:500 .75rem var(--mo);padding:.2rem .6rem;border-radius:999px;border:1px solid var(--bd);color:var(--ac)}
+.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+/* Loader */
+#loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);transition:opacity .5s}
+#loader i{width:42px;height:42px;border:3px solid var(--bd);border-top-color:var(--ac);border-radius:50%;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* Nav */
+header{position:fixed;inset:0 0 auto;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 1.15rem var(--hd)}.logo b{color:var(--ac)}
+#menu{display:flex;gap:1.1rem;list-style:none;padding:0}
+#menu a{font-size:.9rem;color:var(--mu);padding:.3rem 0;border-bottom:2px solid transparent}
+#menu a:hover,#menu a.on{color:var(--ac);border-color:var(--ac)}
+.ib{width:40px;height:40px;border-radius:50%;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;font-size:1.1rem}
+#burger{display:none}
+@media(max-width:900px){#burger{display:inline-block}
+#menu{position:fixed;inset:64px 0 auto;flex-direction:column;background:var(--bg);padding:1.2rem 1.5rem;border-bottom:1px solid var(--bd);transform:translateY(-130%);transition:transform .3s}
+#menu.open{transform:none}}
+/* Hero */
+#home{min-height:100svh;display:flex;align-items:center;padding-top:7rem;background:radial-gradient(60% 50% at 80% 20%,rgba(0,242,254,.12),transparent),var(--bg)}
+.hero{display:grid;gap:3rem;align-items:center;grid-template-columns:1.3fr 1fr}
+h1{font-size:clamp(2.8rem,9vw,5.6rem);letter-spacing:-.03em;font-weight:800}
+.role{font:500 1.15rem var(--mo);color:var(--ac);min-height:1.8em;margin:.8rem 0}
+.cur{border-right:2px solid var(--ac);animation:bl 1s step-end infinite}@keyframes bl{50%{border-color:transparent}}
+.hero p.lead{color:var(--mu);max-width:52ch;margin-bottom:1.6rem}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.soc{display:flex;gap:.6rem;flex-wrap:wrap}.soc a{font:500 .8rem var(--mo);padding:.35rem .8rem;border:1px solid var(--bd);border-radius:8px;color:var(--mu)}.soc a:hover{color:var(--ac);border-color:var(--ac)}
+.photo{aspect-ratio:1;max-width:340px;margin-inline:auto;width:100%;border-radius:28px;display:grid;place-items:center;text-align:center;color:var(--mu);font:.85rem var(--mo);box-shadow:0 0 60px -15px var(--ac);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.photo{order:-1;max-width:220px}}
+/* Cards, skills, timeline */
+.card{padding:1.4rem;transition:transform .25s,border-color .25s}.card:hover{transform:translateY(-4px);border-color:var(--ac)}
+.card h3{font-size:1.1rem;margin-bottom:.6rem}.card p{color:var(--mu);font-size:.94rem}
+.sk{display:flex;justify-content:space-between;font-size:.88rem;margin-top:.8rem}.sk em{font:normal .72rem var(--mo);color:var(--mu)}
+.bar{height:6px;border-radius:9px;background:var(--bd);margin-top:.3rem;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--bl),var(--ac));transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.tl{border-left:2px solid var(--bd);padding-left:1.5rem;max-width:720px}.tl .it{position:relative;margin-bottom:1.6rem}
+.tl .it::before{content:"";position:absolute;left:-1.95rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--ac);box-shadow:0 0 12px var(--ac)}
+.two{display:grid;gap:2rem;grid-template-columns:1.2fr 1fr}@media(max-width:800px){.two{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+/* Projects */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.fb{padding:.45rem 1rem;border-radius:999px;border:1px solid var(--bd);background:none;color:var(--mu);cursor:pointer;font:500 .85rem var(--bd-f)}
+.fb.on{background:var(--ac);color:var(--on-ac);border-color:var(--ac)}
+.proj{display:flex;flex-direction:column;gap:.7rem}
+.proj .top{display:flex;justify-content:space-between;gap:.5rem;align-items:flex-start}
+.st{font:500 .7rem var(--mo);padding:.2rem .55rem;border-radius:6px;background:rgba(59,130,246,.18);color:var(--bl);white-space:nowrap}
+.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s}.more>div{overflow:hidden}
+.proj.open .more{grid-template-rows:1fr}
+.more h4{font:700 .8rem var(--hd);color:var(--ac);margin:.9rem 0 .2rem}.more p,.more li{font-size:.9rem;color:var(--mu)}.more ul{padding-left:1.1rem}
+.lk{display:flex;gap:.6rem;flex-wrap:wrap}.lk a{font:500 .8rem var(--mo);color:var(--ac);border-bottom:1px dashed var(--ac)}
+.tg{background:none;border:0;color:var(--ac);font:600 .85rem var(--hd);cursor:pointer;text-align:left;padding:0}
+/* Contact */
+form{display:grid;gap:1rem;padding:1.6rem}
+label{font-size:.85rem;color:var(--mu);display:block;margin-bottom:.3rem}
+input,textarea{width:100%;padding:.75rem .9rem;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit}
+input.bad,textarea.bad{border-color:#F87171}.err{color:#F87171;font-size:.78rem;min-height:1em}
+/* Footer, toast, misc */
+footer{padding:2.5rem 0;border-top:1px solid var(--bd);background:var(--bg2);font-size:.9rem;color:var(--mu)}
+.fo{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}.fo nav{height:auto;gap:1rem;flex-wrap:wrap}
+#top{position:fixed;right:1.2rem;bottom:1.2rem;opacity:0;pointer-events:none;transition:.3s;background:var(--ac);color:var(--on-ac);border:0;z-index:40}#top.show{opacity:1;pointer-events:auto}
+#toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,150%);padding:.8rem 1.3rem;border-radius:12px;background:var(--bg2);border:1px solid var(--ac);z-index:90;transition:transform .35s;max-width:90vw;text-align:center}
+#toast.show{transform:translate(-50%,0)}#toast.fail{border-color:#F87171}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+.ph{outline:1px dashed var(--bd);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="loader" aria-label="Loading"><i></i></div>
+
+<header><div class="wrap"><nav aria-label="Main">
+  <a class="logo" href="#home">Bharath<b>.</b>Vasan</a>
+  <ul id="menu">
+    <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#internship">Internship</a></li>
+    <li><a href="#certs">Achievements</a></li><li><a href="#services">Services</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <div><button class="ib" id="theme" aria-label="Toggle dark or light theme">☾</button>
+  <button class="ib" id="burger" aria-label="Open menu" aria-expanded="false">☰</button></div>
+</nav></div></header>
+
+<main>
+<!-- HOME -->
+<section id="home"><div class="wrap hero">
+  <div>
+    <p class="tag" style="display:inline-block">CSE · Chennai Institute of Technology</p>
+    <h1>Bharath Vasan</h1>
+    <p class="role"><span id="typed" class="cur"></span></p>
+    <p class="lead">Second-year engineering student who enjoys turning messy problems into clear, usable software. I build full-stack apps, design interfaces in Figma, and keep learning every week.</p>
+    <div class="cta"><a class="btn pri" href="#contact">Hire me</a><a class="btn" href="#projects">Explore projects</a><button class="btn" id="resume">Download resume</button></div>
+    <div class="soc" id="socials"></div>
+  </div>
+  <div class="photo glass ph" id="photo"><span>Profile photo<br>Set CONFIG.photoUrl</span></div>
+</div></section>
+
+<!-- ABOUT -->
+<section id="about"><div class="wrap two">
+  <div class="rv"><h2 class="h2">About me</h2>
+    <p class="sub" style="max-width:none">I'm a Computer Science and Engineering student who likes understanding how things work and then making them work better. Logical thinking and steady problem solving drive my engineering; curiosity and design sense drive how I shape what users see. I'm drawn to full-stack development, UI/UX, AI, and data structures and algorithms, and I learn best by building real projects.</p>
+    <p class="sub" style="max-width:none"><strong style="color:var(--tx)">Career objective:</strong> to become a skilled software engineer who develops innovative, practical and user-focused technology solutions.</p>
+    <div class="chips" id="interests"></div></div>
+  <div class="grid rv" id="strengths"></div>
+</div></section>
+
+<!-- EDUCATION -->
+<section id="education"><div class="wrap"><h2 class="h2 rv">Education</h2><p class="sub rv">Where I'm studying and how I'm growing.</p>
+  <div class="tl rv">
+    <div class="it"><h3>B.E. Computer Science and Engineering</h3><p style="color:var(--ac)">Chennai Institute of Technology</p><p class="sub" style="margin:0">Currently in second year. Core focus: data structures, OOP, databases and web development.</p></div>
+    <div class="it"><h3>Higher secondary / school</h3><p class="sub ph" style="margin:0">Add school name, board and year here (edit in index.html).</p></div>
+  </div></div></section>
+
+<!-- SKILLS -->
+<section id="skills"><div class="wrap"><h2 class="h2 rv">Technical skills</h2>
+  <p class="sub rv">Bars show my own honest level: Learning, Working, or Comfortable. None are claims of professional expertise.</p>
+  <div class="grid" id="skillGrid"></div></div></section>
+
+<!-- PROJECTS -->
+<section id="projects"><div class="wrap"><h2 class="h2 rv">Projects</h2>
+  <p class="sub rv">Select a card to read the problem, solution and my contribution.</p>
+  <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+  <div class="grid" id="projGrid"></div></div></section>
+
+<!-- INTERNSHIP -->
+<section id="internship"><div class="wrap"><h2 class="h2 rv">Internship experience</h2>
+  <div class="card glass rv" style="max-width:760px"><h3>UI/UX Intern, Ovi Design Academy</h3>
+    <p>Worked on the full design cycle in Figma, from understanding users to preparing designs for developers.</p>
+    <ul style="color:var(--mu);padding-left:1.1rem;margin-top:.8rem;font-size:.94rem">
+      <li>Gathered requirements and carried out user research</li><li>Created wireframes and visual designs in Figma</li>
+      <li>Built interactive prototypes to test flows</li><li>Handed designs to developers using Figma Dev Mode</li></ul>
+    <p class="ph" style="margin-top:.8rem;font-size:.85rem">Add duration and certificate link here.</p></div></div></section>
+
+<!-- CERTS -->
+<section id="certs"><div class="wrap"><h2 class="h2 rv">Certifications and achievements</h2>
+  <p class="sub rv">Placeholders only. Replace with real entries and links once verified.</p>
+  <div class="grid" id="certGrid"></div></div></section>
+
+<!-- SERVICES -->
+<section id="services"><div class="wrap"><h2 class="h2 rv">What I can do</h2><div class="grid" id="svcGrid" style="margin-top:2rem"></div></div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="wrap two"><div class="rv"><h2 class="h2">Let's work together</h2>
+  <p class="sub">Open to internships, collaborations and placement opportunities.</p>
+  <p class="ph" id="info" style="display:inline-block;padding:.4rem .8rem"></p><div class="soc" id="socials2" style="margin-top:1rem"></div></div>
+  <form class="glass rv" id="cform" novalidate>
+    <div><label for="n">Name</label><input id="n" name="name" autocomplete="name"><div class="err" data-e="name"></div></div>
+    <div><label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email"><div class="err" data-e="email"></div></div>
+    <div><label for="s">Subject</label><input id="s" name="subject"><div class="err" data-e="subject"></div></div>
+    <div><label for="m">Message</label><textarea id="m" name="message" rows="5"></textarea><div class="err" data-e="message"></div></div>
+    <button class="btn pri" type="submit" id="send">Send message</button>
+  </form></div></section>
+</main>
+
+<footer><div class="wrap fo"><span>© <span id="yr"></span> Bharath Vasan. All rights reserved.</span>
+  <nav aria-label="Footer"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+  <div class="soc" id="socials3"></div></div></footer>
+<button class="ib" id="top" aria-label="Back to top">↑</button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============ CONFIG: edit these values ============ */
+const CONFIG={
+  photoUrl:"",                 // e.g. "images/bharath.jpg"
+  resumeUrl:"",                // e.g. "resume.pdf" (file next to index.html)
+  email:"your-email@example.com", phone:"+91 XXXXX XXXXX", location:"Chennai, Tamil Nadu",
+  socials:{GitHub:"",LinkedIn:"",Instagram:"",Behance:""},   // empty = placeholder, shows a notice
+  /* Optional online storage (Supabase). Use ONLY the public anon key with Row Level Security allowing
+     INSERT on table "messages"(name,email,subject,message). Never put a service-role/secret key here. */
+  supabase:{url:"",anonKey:"",table:"messages"}
+};
+const ROLES=["Aspiring Software Engineer","UI/UX Enthusiast","Problem Solver","Full-Stack Learner"];
+const INTERESTS=["Software Development","Full-Stack Development","UI/UX Design","Artificial Intelligence","Data Structures & Algorithms","Emerging Technologies"];
+const STRENGTHS=[["Logical thinking","Breaking problems into clear steps."],["Creativity","Pairing engineering with design sense."],["Continuous learning","Building projects to pick up new tools."],["Problem solving","Debugging patiently until it works."]];
+// level: 1=Learning, 2=Working, 3=Comfortable
+const SKILLS={
+ "Programming Languages":[["C",2],["C++",2],["Java",2],["Python",2],["JavaScript",2]],
+ "Frontend Development":[["HTML5",3],["CSS3",3],["JavaScript",2],["Responsive Web Design",3],["React.js",1]],
+ "Backend Development":[["Node.js",2],["Express.js",2],["REST API Fundamentals",2],["Database Integration",2]],
+ "Databases":[["MySQL",2],["MongoDB",2],["PostgreSQL",1]],
+ "UI/UX and Design":[["Figma",3],["Wireframing",3],["Prototyping",3],["Design Thinking",2],["User Research",2],["UI Design",3]],
+ "Core Engineering":[["Data Structures & Algorithms",2],["Object-Oriented Programming",2],["Problem Solving",3],["Logical Thinking",3],["Software Development",2],["Debugging",2]]};
+const ICON={"Programming Languages":"{ }","Frontend Development":"</>","Backend Development":"⚙","Databases":"▤","UI/UX and Design":"✎","Core Engineering":"∑"};
+const LV=["","Learning","Working","Comfortable"],W=["",35,62,82];
+/* Project data. Edit status, contribution and links (github/demo "" = placeholder). */
+const PROJECTS=[
+ {name:"InboxAI",cat:"AI",status:"In development",tags:["AI","NLP","Productivity"],
+  short:"AI-powered email manager that categorizes, prioritizes and summarizes emails.",
+  problem:"People lose time sorting long inboxes and miss deadlines, tasks and meetings buried in messages.",
+  solution:"An intelligent assistant that organizes email and surfaces what needs attention first.",
+  features:["Email categorization","Priority ranking","Summaries","Deadline, task and meeting detection"],
+  tech:["Python","AI/NLP"],contrib:"Edit: describe your role (design, coding, AI integration).",github:"",demo:""},
+ {name:"Smart Pantry",cat:"Java",status:"Completed",tags:["Java","Console App","OOP"],
+  short:"Java console app to manage grocery inventory and plan shopping.",
+  problem:"Households forget what they have and run out of essentials or overbuy.",
+  solution:"A console application that tracks stock and flags items running low.",
+  features:["Inventory management","Stock level monitoring","Low-stock alerts","Grocery planning support"],
+  tech:["Java","OOP"],contrib:"Edit: describe your role.",github:"",demo:""},
+ {name:"AgriMind AI",cat:"AI",status:"In development",tags:["AI","Image Classification","Agriculture"],
+  short:"Crop disease detection and decision support using image classification.",
+  problem:"Farmers often identify crop diseases late, which reduces yield.",
+  solution:"A system that classifies crop images to detect disease and suggests treatments.",
+  features:["Disease detection from images","Treatment recommendations","Decision support"],
+  tech:["Python","Image classification"],contrib:"Edit: describe your role.",github:"",demo:""},
+ {name:"EcoTrack",cat:"Web",status:"In development",tags:["Sustainability","Gamification","Community"],
+  short:"Sustainability app that rewards eco-friendly habits through tracking and community.",
+  problem:"Small green habits are hard to sustain without feedback or motivation.",
+  solution:"Track activities, earn rewards and engage with a community.",
+  features:["Activity tracking","Gamification","Community engagement"],
+  tech:["Add stack"],contrib:"Edit: describe your role.",github:"",demo:""},
+ {name:"ReMe – UI/UX Design",cat:"Design",status:"Design complete",tags:["Figma","UX Research","Prototype"],
+  short:"Figma design project covering research, wireframes, visuals and prototype.",
+  problem:"Edit: state the user problem ReMe addresses.",
+  solution:"A researched, user-centred interface validated through an interactive prototype.",
+  features:["User research","Wireframing","Visual design","Interactive prototype"],
+  tech:["Figma"],contrib:"Edit: describe your role.",github:"",demo:""}];
+const CERTS=[["Certification placeholder","Add course name, issuer and date."],["Course completion placeholder","Add course and link."],["Hackathon participation","Add event name, date and your role."],["Technical learning","Add milestone or achievement."]];
+const SERVICES=[["Frontend Development","Responsive, accessible interfaces in HTML, CSS and JavaScript."],["UI/UX Design","Research, wireframes and Figma prototypes."],["Website Development","Clean websites for individuals and small projects."],["Java Application Development","Object-oriented console and desktop-style apps."],["Creative Problem Solving","Structured thinking applied to real problems."]];
+
+/* ============ Helpers ============ */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let tt;function toast(msg,fail){const t=$("#toast");t.textContent=msg;t.className="show"+(fail?" fail":"");clearTimeout(tt);tt=setTimeout(()=>t.className="",3800)}
+function link(href,label){return href?`<a href="${esc(href)}" target="_blank" rel="noopener">${label}</a>`:`<a href="#" data-ph="${label}">${label} (add link)</a>`}
+
+/* ============ Render static data ============ */
+["#socials","#socials2","#socials3"].forEach(id=>$(id).innerHTML=Object.entries(CONFIG.socials).map(([k,v])=>link(v,k)).join(""));
+$("#info").textContent=`${CONFIG.email} · ${CONFIG.phone} · ${CONFIG.location}`;
+$("#interests").innerHTML=INTERESTS.map(i=>`<span class="tag">${i}</span>`).join("");
+$("#strengths").innerHTML=STRENGTHS.map(s=>`<div class="card glass"><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");
+$("#skillGrid").innerHTML=Object.entries(SKILLS).map(([c,l])=>`<div class="card glass rv"><h3><span style="font-family:var(--mo);color:var(--ac)">${ICON[c]}</span> ${c}</h3>${l.map(([n,v])=>`<div class="sk"><span>${n}</span><em>${LV[v]}</em></div><div class="bar" role="img" aria-label="${n}: ${LV[v]}"><i data-w="${W[v]}"></i></div>`).join("")}</div>`).join("");
+$("#certGrid").innerHTML=CERTS.map(c=>`<div class="card glass rv"><h3>${c[0]}</h3><p class="ph">${c[1]}</p></div>`).join("");
+$("#svcGrid").innerHTML=SERVICES.map(s=>`<div class="card glass rv"><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");
+if(CONFIG.photoUrl)$("#photo").innerHTML=`<img src="${esc(CONFIG.photoUrl)}" alt="Bharath Vasan" loading="lazy">`;
+$("#yr").textContent=new Date().getFullYear();
+
+/* ============ Projects: render, expand, filter ============ */
+function renderProjects(f="All"){
+  $("#projGrid").innerHTML=PROJECTS.filter(p=>f==="All"||p.cat===f).map((p,i)=>`
+  <article class="card glass proj rv in">
+    <div class="top"><h3>${p.name}</h3><span class="st">${p.status}</span></div>
+    <p>${p.short}</p><div class="chips" style="margin:0">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    <button class="tg" aria-expanded="false" aria-controls="d${i}">View details +</button>
+    <div class="more" id="d${i}"><div>
+      <h4>Problem statement</h4><p>${p.problem}</p><h4>Proposed solution</h4><p>${p.solution}</p>
+      <h4>Key features</h4><ul>${p.features.map(x=>`<li>${x}</li>`).join("")}</ul>
+      <h4>Technologies used</h4><p>${p.tech.join(", ")}</p><h4>My contribution</h4><p>${p.contrib}</p>
+      <h4>Status</h4><p>${p.status}</p></div></div>
+    <div class="lk">${link(p.github,"GitHub")}${link(p.demo,"Live demo")}</div></article>`).join("");
+}
+renderProjects();
+$("#filters").innerHTML=["All",...new Set(PROJECTS.map(p=>p.cat))].map((c,i)=>`<button class="fb${i?"":" on"}" data-f="${c}">${c}</button>`).join("");
+$("#filters").addEventListener("click",e=>{const b=e.target.closest(".fb");if(!b)return;$$(".fb").forEach(x=>x.classList.remove("on"));b.classList.add("on");renderProjects(b.dataset.f)});
+$("#projGrid").addEventListener("click",e=>{const b=e.target.closest(".tg");if(!b)return;const c=b.closest(".proj"),o=c.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"Hide details −":"View details +"});
+document.addEventListener("click",e=>{const a=e.target.closest("a[data-ph]");if(a){e.preventDefault();toast(`${a.dataset.ph} link not set yet. Add it in CONFIG or PROJECTS.`)}});
+
+/* ============ Typing effect ============ */
+(function(){const el=$("#typed");let r=0,c=0,del=false;
+ function tick(){const w=ROLES[r];el.textContent=w.slice(0,c);
+  if(!del&&c===w.length){del=true;return setTimeout(tick,1500)}
+  if(del&&c===0){del=false;r=(r+1)%ROLES.length}
+  c+=del?-1:1;setTimeout(tick,del?40:80)}
+ matchMedia("(prefers-reduced-motion:reduce)").matches?el.textContent=ROLES[0]:tick()})();
+
+/* ============ Theme, menu, scroll behaviour ============ */
+const root=document.documentElement,tb=$("#theme");
+try{const s=localStorage.getItem("bv_theme");if(s)root.dataset.theme=s}catch(e){}
+const syncT=()=>tb.textContent=root.dataset.theme==="light"?"☀":"☾";syncT();
+tb.onclick=()=>{root.dataset.theme=root.dataset.theme==="light"?"dark":"light";try{localStorage.setItem("bv_theme",root.dataset.theme)}catch(e){}syncT()};
+const mn=$("#menu"),bg=$("#burger");
+bg.onclick=()=>{const o=mn.classList.toggle("open");bg.setAttribute("aria-expanded",o)};
+mn.addEventListener("click",e=>{if(e.target.matches("a")){mn.classList.remove("open");bg.setAttribute("aria-expanded","false")}});
+$("#top").onclick=()=>scrollTo({top:0,behavior:"smooth"});
+addEventListener("scroll",()=>$("#top").classList.toggle("show",scrollY>600),{passive:true});
+// Scroll reveal + skill bars
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");$$("[data-w]",e.target).forEach(b=>b.style.width=b.dataset.w+"%");io.unobserve(e.target)}}),{threshold:.15});
+$$(".rv").forEach(el=>io.observe(el));
+// Active nav highlight
+const links=$$("#menu a"),so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.hash==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("main section").forEach(s=>so.observe(s));
+addEventListener("load",()=>{const l=$("#loader");l.style.opacity=0;setTimeout(()=>l.remove(),500)});
+
+/* ============ Resume ============ */
+$("#resume").onclick=()=>{if(!CONFIG.resumeUrl)return toast("Resume not added yet. Set CONFIG.resumeUrl.",true);
+ const a=document.createElement("a");a.href=CONFIG.resumeUrl;a.download="Bharath_Vasan_Resume.pdf";a.click()};
+
+/* ============ Contact form: validation + storage ============ */
+const RULES={name:v=>v.trim().length>=2||"Enter your name (2+ characters).",
+ email:v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)||"Enter a valid email address.",
+ subject:v=>v.trim().length>=3||"Enter a subject (3+ characters).",
+ message:v=>v.trim().length>=10||"Message needs at least 10 characters."};
+function validate(f){let ok=true;for(const k in RULES){const el=f.elements[k],r=RULES[k](el.value);el.classList.toggle("bad",r!==true);$(`[data-e=${k}]`,f).textContent=r===true?"":r;if(r!==true)ok=false}return ok}
+/* Demo persistence: LocalStorage only. This is NOT a real database; data stays in this browser. */
+function saveLocal(d){const k="bv_messages",a=JSON.parse(localStorage.getItem(k)||"[]");a.push({...d,at:new Date().toISOString()});localStorage.setItem(k,JSON.stringify(a))}
+/* Online persistence: Supabase REST insert using the public anon key (protect with RLS). */
+async function saveOnline(d){const s=CONFIG.supabase;if(!s.url||!s.anonKey)return false;
+ const r=await fetch(`${s.url}/rest/v1/${s.table}`,{method:"POST",headers:{"Content-Type":"application/json",apikey:s.anonKey,Authorization:"Bearer "+s.anonKey,Prefer:"return=minimal"},body:JSON.stringify(d)});
+ if(!r.ok)throw new Error("Server responded "+r.status);return true}
+$("#cform").addEventListener("submit",async e=>{e.preventDefault();const f=e.target;if(!validate(f))return toast("Please fix the highlighted fields.",true);
+ const d=Object.fromEntries(new FormData(f)),b=$("#send");b.disabled=true;b.textContent="Sending…";
+ try{const online=await saveOnline(d);if(!online)saveLocal(d);
+  toast(online?"Message sent. Thank you!":"Saved in this browser (demo mode). Connect Supabase to receive messages.");f.reset()}
+ catch(err){try{saveLocal(d)}catch(_){}toast("Couldn't reach the server: "+err.message+". Saved locally instead.",true)}
+ finally{b.disabled=false;b.textContent="Send message"}});
+$$("#cform input,#cform textarea").forEach(el=>el.addEventListener("input",()=>{if(el.classList.contains("bad"))validate(el.form)}));
+</script>
+</body>
+</html>
